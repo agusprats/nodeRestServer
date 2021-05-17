@@ -1,0 +1,28 @@
+{
+  "name": "noderestserver",
+  "version": "1.0.0",
+  "description": "Node Rest Server Base para proyectos",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon index",
+    "start":"node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agusprats/nodeRestServer.git"
+  },
+  "author": "Agustina Prats",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agusprats/nodeRestServer/issues"
+  },
+  "homepage": "https://github.com/agusprats/nodeRestServer#readme",
+  "dependencies": {
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
