@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan');
 const config = require('../../config');
 
 class ExpressServer{
@@ -11,8 +12,13 @@ class ExpressServer{
     }
     _middlewares(){
         this.app.use(express.json());
+        this.app.use(morgan('tiny'));
     }
     _routes(){
+        this.app.head('/status', (req, res) => {
+            res.status(200).end();
+        });
+        
         this.app.use(this.basePathUser, require('../../routes/users'));
     }
 
