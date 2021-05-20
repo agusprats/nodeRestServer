@@ -4,8 +4,8 @@
   "description": "Node Rest Server Base para proyectos",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon index",
-    "start":"node index",
+    "dev": "npx nodemon src",
+    "start":"node src/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

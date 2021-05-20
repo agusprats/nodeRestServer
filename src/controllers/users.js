@@ -1,12 +1,12 @@
-require('dotenv').config();
 const express = require('express');
-const app = express()
 
-const port = process.env.PORT || 3100;
+/**
+ * 
+ * @param {express.Request} req 
+ * @param {express.Response} res 
+ */
 
-app.use(express.json());
-
-app.get('/users', (req, res) => {
+const getAllUsers = (req, res) => {
     const users = [
         {
             id:1,
@@ -17,10 +17,10 @@ app.get('/users', (req, res) => {
             name: 'Andy'
         }
     ]
-    res.status(200).json(users)
-});
+    res.status(200).json(users);
+};
 
-app.post('/users',(req, res)=>{
+const createUser = (req, res) => {
 
     const user = req.body;
     const result = {
@@ -28,9 +28,9 @@ app.post('/users',(req, res)=>{
         user
     }
     res.status(201).json(result);
-});
+};
 
-app.put('/users/:id',(req, res)=>{
+const updateUser = (req, res) => {
     const {id} = req.params;
     const user = req.body;
     user.id = id;
@@ -38,22 +38,28 @@ app.put('/users/:id',(req, res)=>{
         message: 'User updated'
     }
     res.status(200).json(result);
-});
-app.patch('/users', (req, res)=>{
+};
+
+const updatePartialUser = (req, res)=>{
     const result = {
         message: 'User updated with patch'
     }
     res.status(200).json(result);
-});
-app.delete('/users/:id',(req, res)=> {
+};
+
+const deleteUser = (req, res)=> {
     const {id} = req.params;
-    //const id = req.params.id;
+    //o bien const id = req.params.id;
     const result = {
         message: `User with id: ${id} Deleted`
     }
     res.json(result);
-});
+};
 
-app.listen(port, () => {
-console.log(`==> ==> ==> App started at Port: ${port}`)
-});
+module.exports = {
+    getAllUsers,
+    createUser,
+    updateUser,
+    updatePartialUser,
+    deleteUser
+}
