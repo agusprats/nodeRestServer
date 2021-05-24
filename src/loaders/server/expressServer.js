@@ -40,14 +40,16 @@ class ExpressServer{
     _errorHandler(){
         this.app.use((err, req, res, next) => {
             const code = err.code || 500;
-            res.status(code);
+            logger.error(`${code} - ${err.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`);
+            logger.error(`${err.stack}`);
+            
             const body = {
                 error: {
                     code,
                     message: err.message
                 }
             }
-            res.json(body);
+            res.status(code).json(body);
         })
     }
     _swaggerConfig(){

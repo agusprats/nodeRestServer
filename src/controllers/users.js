@@ -7,6 +7,7 @@ const express = require('express');
  */
 
 const getAllUsers = (req, res) => {
+    throw new Error('Error de testeo de handler');
     const users = [
         {
             id:1,
@@ -35,7 +36,8 @@ const updateUser = (req, res) => {
     const user = req.body;
     user.id = id;
     const result = {
-        message: 'User updated'
+        message: 'User updated',
+        user
     }
     res.status(200).json(result);
 };
